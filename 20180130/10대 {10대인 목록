@@ -1,0 +1,29 @@
+10대 {10대인 목록
+		지역별 { 지역을 가져와야함(member_info['area']
+							member를 가져오려면 10대의 상품들의 각 주문자를 알아야함)
+			가장 많은 {
+				quantity가 높은 순으로 1개씩  정렬
+				}
+			}
+	}
+
+
+/*구매상태가 구매확정인 상품들*/
+지역별{
+	(10대{
+		가장많음
+	})->$data_age_group
+}
+
+select *, max(sum) as max_sum from (
+SELECT 	r.*,
+                m.area,
+                floor(m.age/10) as age_group,
+                sum(r.quantity) as sum,
+                count(r.product) as cnt
+        FROM reserve r
+        join member m on r.name = m.name
+        group by age_group, product, area  
+) t
+where age_group = 1
+group by area

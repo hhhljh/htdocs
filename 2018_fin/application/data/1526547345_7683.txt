@@ -1,0 +1,1 @@
+2018-05-10 08:29:58 [Agent.cpp:206-pid(2756)] DEBUG  -  agent service remove entry
